@@ -40,3 +40,32 @@ To use MyManus, follow the [usage guide](./USAGE.md).
 # [EXAMPLES](./EXAMPLES.md)
 
 To see MyManus in action, check out the [examples](./EXAMPLES.md).
+
+---
+
+# Skills Marketplace
+
+MyManus now includes a built-in **Skills Marketplace** with 8 professional skills, all in Traditional Chinese:
+
+## 📊 Data & Analysis
+- **stock-analysis** (v1.0.0) - Stock and company financial analysis
+- **excel-generator** (v1.0.0) - Professional Excel spreadsheet creation
+- **similarweb-analytics** (v1.0.0) - Website traffic and engagement analysis
+
+## 🔍 Tool Search
+- **github-gem-seeker** (v2.0.0) - Search GitHub for battle-tested solutions and sensitive data
+- **internet-skill-finder** (v1.0.0) - Search and recommend Agent Skills
+
+## 🛠️ Development Tools
+- **skill-creator** (v1.0.0) - Interactive skill creation guide
+
+## 🔒 Security & Penetration Testing
+- **penetration-testing** (v1.0.0) - Integrated penetration testing framework (Shodan + Nmap + Kali Tools)
+  - Includes professional **White Hat Hacker Prompt**
+  - Deep vulnerability verification
+  - Custom code generation when standard tools fail
+  - Systematic thinking chain: Observe → Hypothesize → Test → Analyze → Act
+
+All skills are located in `mymanus-plugin/skills/` and are automatically loaded when MyManus starts.
+
+For more information, see [mymanus-plugin/skills/README.md](./mymanus-plugin/skills/README.md).
