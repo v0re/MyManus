@@ -1,215 +1,214 @@
-# MyManus Plugin Installation for Claude Code
+# MyManus Plugin for Claude Code 安裝指南
 
-This guide covers installing and using the MyManus plugin with [Claude Code](https://claude.com/claude-code), Anthropic's official CLI for Claude.
+本指南涵蓋如何安裝並使用 MyManus 外掛程式與 [Claude Code](https://claude.com/claude-code)，這是 Anthropic 官方為 Claude 設計的 CLI。
 
-## Overview
+## 概述
 
-The MyManus plugin brings autonomous agent capabilities to Claude Code through a **skill-based approach**. Unlike the original MyManus (for Claude Desktop), this plugin:
+MyManus 外掛程式透過**基於技能的方法**為 Claude Code 帶來自主代理能力。與原始的 MyManus（適用於 Claude Desktop）不同，此外掛程式：
 
-- ✅ **Uses Claude Code's built-in tools** (Bash, Read, Write, Edit, Glob, Grep)
-- ✅ **Relies on Claude Code's MCP integration** (no separate file/shell servers)
-- ✅ **Automatically configures Playwright MCP** for browser automation
-- ⚠️ **No dedicated sandboxing** beyond Claude Code's standard capabilities
+- ✅ **使用 Claude Code 的內建工具**（Bash、Read、Write、Edit、Glob、Grep）
+- ✅ **依賴 Claude Code 的 MCP 整合**（無需獨立的檔案/shell 伺服器）
+- ✅ **自動設定 Playwright MCP** 以進行瀏覽器自動化
+- ⚠️ **除了 Claude Code 的標準功能外，沒有專門的沙箱**
 
-## Prerequisites
+## 先決條件
 
-Before installing the MyManus plugin, ensure you have:
+在安裝 MyManus 外掛程式之前，請確保您已具備：
 
-1. **Claude Code**: Install from [claude.com/claude-code](https://claude.com/claude-code)
-2. **Node.js** v18 or later: Required for Playwright MCP server
+1. **Claude Code**：從 [claude.com/claude-code](https://claude.com/claude-code) 安裝
+2. **Node.js** v18 或更高版本：Playwright MCP 伺服器需要
    ```bash
-   node --version  # Should show v18.0.0 or higher
+   node --version  # 應顯示 v18.0.0 或更高版本
    ```
-3. **Git**: For accessing the plugin repository
+3. **Git**：用於存取外掛程式儲存庫
 
-> * Note that claude code can and will assist with installation steps if you run into issues!
+> * 請注意，如果您在安裝過程中遇到問題，claude code 可以並將會協助您完成安裝步驟！
 
-## Installation
+## 安裝
 
-### Step 1: Add the MyManus Marketplace
+### 步驟 1：新增 MyManus 市集
 
-Open Claude Code and run:
+開啟 Claude Code 並執行：
 
 ```bash
 /plugin marketplace add https://github.com/emsi/MyManus.git
 ```
 
-This adds the MyManus plugin marketplace to your Claude Code configuration.
+這會將 MyManus 外掛程式市集新增到您的 Claude Code 設定中。
 
-### Step 2: Install the Plugin
+### 步驟 2：安裝外掛程式
 
 ```bash
 /plugin install mymanus@mymanus
 ```
 
-The plugin will be installed and the `.mcp.json` file will automatically configure the Playwright MCP server.
+此外掛程式將被安裝，且 `.mcp.json` 檔案將自動設定 Playwright MCP 伺服器。
 
-### Step 3: Restart Claude Code
+### 步驟 3：重新啟動 Claude Code
 
-**Important**: You must restart Claude Code for the plugin and MCP server to load.
+**重要**：您必須重新啟動 Claude Code 才能載入外掛程式和 MCP 伺服器。
 
 ```bash
-# Exit Claude Code
+# 退出 Claude Code
 exit
 
-# Start Claude Code again
+# 再次啟動 Claude Code
 claude
 ```
 
-### Step 4: Verify Installation
+### 步驟 4：驗證安裝
 
-Check that the plugin loaded successfully:
+檢查外掛程式是否成功載入：
 
 ```bash
 /plugin list
 ```
 
-You should see `mymanus` in the installed plugins list.
+您應該會在已安裝的外掛程式清單中看到 `mymanus`。
 
 ```
 /doctor 
 ```
-to verify MCP servers are running correctly.
+以驗證 MCP 伺服器是否正常運行。
 
-## Using the MyManus Skill
+## 使用 MyManus 技能
 
-The MyManus plugin provides autonomous agent capabilities through a **skill**. Skills in Claude Code are designed to be **automatically invoked** based on task context, but you can also **explicitly request** them.
+MyManus 外掛程式透過**技能**提供自主代理能力。Claude Code 中的技能設計為根據任務上下文**自動調用**，但您也可以**明確請求**它們。
 
-### Automatic Invocation (Recommended)
+### 自動調用（推薦）
 
-When you give Claude a complex, multi-step task, it should automatically recognize and apply the MyManus skill. For example:
+當您給 Claude 一個複雜的多步驟任務時，它應該會自動識別並應用 MyManus 技能。例如：
 
 ```
-Research the latest developments in quantum computing in 2024,
-write a comprehensive report with citations, and create a summary
-presentation.
+研究 2024 年量子計算的最新發展，
+撰寫一份包含引用的綜合報告，並建立一份摘要簡報。
 ```
 
-Claude will automatically use the MyManus skill's structured agent loop (Plan → Execute → Observe → Iterate) to handle this complex task.
+Claude 將自動使用 MyManus 技能的結構化代理迴圈（規劃 → 執行 → 觀察 → 迭代）來處理這個複雜的任務。
 
-### Explicit Invocation
+### 明確調用
 
-If Claude doesn't automatically apply the MyManus skill for a complex task, you can explicitly request it:
+如果 Claude 沒有為複雜任務自動應用 MyManus 技能，您可以明確請求它：
 
-**Option 1: Direct Request**
+**選項 1：直接請求**
 ```
-Use the MyManus skill to research [topic] and create a detailed report.
-```
-
-**Option 2: Mention Agent Behavior**
-```
-Act as an autonomous agent and research the top 10 AI startups in 2024,
-analyze their products, and create a comparison table.
+使用 MyManus 技能研究 [主題] 並建立一份詳細報告。
 ```
 
-**Option 3: Reference the Agent Loop**
+**選項 2：提及代理行為**
 ```
-Using the agent loop methodology, plan and execute a web scraping task
-to collect product data from example.com.
+作為一個自主代理，研究 2024 年排名前 10 的 AI 新創公司，
+分析他們的產品，並建立一個比較表。
 ```
 
-### When to Use MyManus Skill
+**選項 3：參考代理迴圈**
+```
+使用代理迴圈方法論，規劃並執行一個網頁爬取任務，
+以從 example.com 收集產品資料。
+```
 
-The MyManus skill is ideal for:
+### 何時使用 MyManus 技能
 
-- 🔍 **Complex research tasks** requiring multiple sources and fact-checking
-- 📝 **Long-form writing** with citations and references
-- 🌐 **Web automation** using browser interactions
-- 💻 **Software development projects** with planning and testing
-- 📊 **Data analysis** with multiple processing steps
-- 🤖 **Multi-step workflows** requiring autonomous execution
+MyManus 技能非常適合：
 
-### Skill Behavior
+- 🔍 **複雜的研究任務**，需要多個來源和事實查核
+- 📝 **長篇寫作**，包含引用和參考資料
+- 🌐 **網頁自動化**，使用瀏覽器互動
+- 💻 **軟體開發專案**，包含規劃和測試
+- 📊 **資料分析**，包含多個處理步驟
+- 🤖 **多步驟工作流程**，需要自主執行
 
-When active, the MyManus skill:
+### 技能行為
 
-1. **Plans the task** using TodoWrite for transparent progress tracking
-2. **Executes systematically** following the agent loop methodology
-3. **Validates results** before marking tasks complete
-4. **Adapts strategies** when encountering obstacles
-5. **Reports progress** clearly at each step
+當 MyManus 技能啟動時，它會：
 
-## Important Differences from Claude Desktop MyManus
+1. **規劃任務**，使用 TodoWrite 進行透明的進度追蹤
+2. **系統化執行**，遵循代理迴圈方法論
+3. **驗證結果**，在標記任務完成前
+4. **調整策略**，當遇到障礙時
+5. **清晰報告**，在每一步都報告進度
 
-### File & Shell Access
+## 與 Claude Desktop MyManus 的重要差異
 
-- **Claude Desktop MyManus**: Uses dedicated MCP servers for sandboxed file/shell access
-- **Claude Code MyManus**: Uses Claude Code's **native tools** (Bash, Read, Write, Edit)
-- **Implication**: No additional sandboxing beyond Claude Code's standard security model
+### 檔案與 Shell 存取
 
-### Browser Automation
+- **Claude Desktop MyManus**：使用專門的 MCP 伺服器進行沙箱化的檔案/shell 存取
+- **Claude Code MyManus**：使用 Claude Code 的**原生工具**（Bash、Read、Write、Edit）
+- **影響**：除了 Claude Code 的標準安全模型外，沒有額外的沙箱
 
-- **Both versions**: Use Playwright MCP server for browser automation
-- **Claude Code version**: Auto-configured via `.mcp.json` (no manual setup for macOS/Windows)
+### 瀏覽器自動化
 
-### Security Model
+- **兩個版本**：都使用 Playwright MCP 伺服器進行瀏覽器自動化
+- **Claude Code 版本**：透過 `.mcp.json` 自動設定（macOS/Windows 無需手動設定）
 
-⚠️ **Important**: The Claude Code plugin does **NOT** provide dedicated sandboxing. It operates with the same permissions and access level as Claude Code itself.
+### 安全模型
 
-- File operations use Claude Code's native tools
-- Shell commands run through Claude Code's Bash tool
-- Browser automation runs on your local machine (not in a dedicated sandbox)
+⚠️ **重要**：Claude Code 外掛程式**不**提供專門的沙箱。它的操作權限和存取級別與 Claude Code 本身相同。
 
-**Best Practices**:
-- Review complex commands before execution
-- Use in trusted development environments
-- Be cautious with file operations outside project directories
-- Monitor browser automation tasks
+- 檔案操作使用 Claude Code 的原生工具
+- Shell 命令透過 Claude Code 的 Bash 工具運行
+- 瀏覽器自動化在您的本地機器上運行（不在專門的沙箱中）
 
-## Troubleshooting
+**最佳實踐**：
+- 在執行前審查複雜的命令
+- 在受信任的開發環境中使用
+- 對專案目錄外的檔案操作保持謹慎
+- 監控瀏覽器自動化任務
 
-### Plugin Not Loading
+## 疑難排解
 
-**Symptom**: Plugin doesn't appear in `/plugin list`
+### 外掛程式未載入
 
-**Solutions**:
-1. Verify installation: `/plugin list` and look for `mymanus`
-2. Check marketplace: `/plugin marketplace list`
-3. Check for problems using `/doctor` command
-4. Ask claude for help: "Help me troubleshoot the MyManus plugin installation. My /doctor output shows..."
+**症狀**：外掛程式未出現在 `/plugin list` 中
 
-### Browser Automation Not Working
+**解決方案**：
+1. 驗證安裝：`/plugin list` 並尋找 `mymanus`
+2. 檢查市集：`/plugin marketplace list`
+3. 使用 `/doctor` 命令檢查問題
+4. 向 claude 尋求幫助：「幫我排解 MyManus 外掛程式的安裝問題。我的 /doctor 輸出顯示...」
 
-**Symptom**: Browser-related tasks fail or no browser window appears
+### 瀏覽器自動化無法運作
 
-**Solutions**:
-1. Verify Node.js: `node --version` (need v18+)
-2. Check MCP configuration in Claude Code settings
-3. Ask claude to test MCP server: "Test the Playwright MCP server configuration."
+**症狀**：與瀏覽器相關的任務失敗或沒有瀏覽器視窗出現
 
-### Skill Not Being Used
+**解決方案**：
+1. 驗證 Node.js：`node --version`（需要 v18+）
+2. 檢查 Claude Code 設定中的 MCP 設定
+3. 要求 claude 測試 MCP 伺服器：「測試 Playwright MCP 伺服器設定。」
 
-**Symptom**: Claude doesn't use MyManus agent behavior for complex tasks
+### 技能未使用
 
-**Solutions**:
-1. Explicitly request the skill: "Use the MyManus skill to..."
-2. Mention autonomous behavior: "Act as an autonomous agent and..."
-3. Reference specific capabilities: "Using browser automation, navigate to..."
-4. Check plugin is enabled: `/plugin list` (should show `mymanus` as enabled)
+**症狀**：Claude 未對複雜任務使用 MyManus 代理行為
 
-### MCP Server Errors
+**解決方案**：
+1. 明確請求技能：「使用 MyManus 技能...」
+2. 提及自主行為：「作為一個自主代理...」
+3. 參考特定能力：「使用瀏覽器自動化，導航到...」
+4. 檢查外掛程式是否已啟用：`/plugin list`（應顯示 `mymanus` 為已啟用）
 
-**Symptom**: Playwright MCP server fails to start
+### MCP 伺服器錯誤
 
-**Solutions**:
-1. Update npx cache: `npx clear-npx-cache`
-2. Test manually: `npx -y @automatalabs/mcp-server-playwright`
-3. Check Claude Code logs for detailed error messages
-4. Verify Node.js installation: `which node` and `which npx`
+**症狀**：Playwright MCP 伺服器啟動失敗
 
-## Advanced Configuration
+**解決方案**：
+1. 更新 npx 快取：`npx clear-npx-cache`
+2. 手動測試：`npx -y @automatalabs/mcp-server-playwright`
+3. 檢查 Claude Code 日誌以獲取詳細的錯誤訊息
+4. 驗證 Node.js 安裝：`which node` 和 `which npx`
 
-### Using with Custom MCP Servers
+## 進階設定
 
-The MyManus plugin works alongside any MCP servers you've configured in Claude Code. The plugin's `.mcp.json` only adds Playwright - your existing MCP configuration remains unchanged.
+### 與自訂 MCP 伺服器一起使用
 
-### Disabling Auto-MCP Configuration
+MyManus 外掛程式可與您在 Claude Code 中設定的任何 MCP 伺服器一起使用。此外掛程式的 `.mcp.json` 僅新增 Playwright - 您現有的 MCP 設定保持不變。
 
-If you want to manage Playwright MCP manually:
+### 停用自動 MCP 設定
 
-1. Configure Playwright in Claude Code settings before installing the plugin
-2. The plugin's `.mcp.json` won't override existing configuration
+如果您想手動管理 Playwright MCP：
+
+1. 在安裝外掛程式前，在 Claude Code 設定中設定 Playwright
+2. 此外掛程式的 `.mcp.json` 不會覆蓋現有的設定
 
 ---
 
-**Ready to go!** Start Claude Code and give it a complex task to see the MyManus autonomous agent in action.
+**準備就緒！** 啟動 Claude Code 並給它一個複雜的任務，看看 MyManus 自主代理的實際表現。

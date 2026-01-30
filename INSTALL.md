@@ -1,21 +1,21 @@
-# INSTALLATION
+# 安裝指南
 
-> This guide is Linux only. For Windows, follow [WINDOWS INSTALL](./WINDOWS_INSTALL.md). Expect MacOS installation guides soon.
+> 本指南僅適用於 Linux。對於 Windows，請遵循 [WINDOWS 安裝指南](./WINDOWS_INSTALL.md)。macOS 安裝指南即將推出。
 
-## Pre-requisites
+## 先決條件
 
-- A Linux machine (Ubuntu 22.04+ is recommended).
-- Technically an [MCP Client](https://modelcontextprotocol.io/clients) would do but this guide is specifically for [Linux Claude Desktop](https://github.com/emsi/claude-desktop).
-- [claude.ai](https://claude.ai/) subscription or access to LLM API (any high quality LLM should work but Claude 3.7 is recommended).
-- `sudo` access to install packages.
-- That's it, seriously
+- 一台 Linux 機器（建議使用 Ubuntu 22.04+）。
+- 理論上任何 [MCP 用戶端](https://modelcontextprotocol.io/clients) 都可以，但本指南專為 [Linux Claude Desktop](https://github.com/emsi/claude-desktop) 設計。
+- [claude.ai](https://claude.ai/) 訂閱或 LLM API 存取權限（任何高品質的 LLM 應該都可以，但建議使用 Claude 3.7）。
+- `sudo` 權限以安裝套件。
+- 沒錯，就這樣
 
-## Installation
+## 安裝
 
-Claude Desktop is an electron app. By following this guide you will download and install the claude-desktop Windows app, repackage it to a Linux deb package and install it on your machine.
-Additionally a special claude_sandbox.sh script will be created to run Claude Desktop in a sandboxed environment. This makes it safer to give the AI access to the local filesystem.
+Claude Desktop 是一個 Electron 應用程式。遵循本指南，您將下載並安裝 claude-desktop Windows 應用程式，將其重新打包為 Linux deb 套件，並安裝在您的機器上。
+此外，將建立一個特殊的 claude_sandbox.sh 腳本，以在沙箱環境中運行 Claude Desktop。這使得給予 AI 存取本地檔案系統的權限更加安全。
 
-### Install and Run Claude Desktop
+### 安裝並運行 Claude Desktop
 ```bash
 wget -O- https://raw.githubusercontent.com/emsi/claude-desktop/refs/heads/main/install-claude-desktop.sh | bash
 
@@ -24,51 +24,51 @@ wget -O- https://raw.githubusercontent.com/emsi/claude-desktop/refs/heads/main/i
 claude-desktop
 ```
 
-This should create `~/sandboxes/claude-desktop/` folder managed by MyManus.
+這應該會建立由 MyManus 管理的 `~/sandboxes/claude-desktop/` 資料夾。
 
-Then EXIT the Claude desktop app and copy the MCP tools configuration:
+然後退出 Claude Desktop 應用程式並複製 MCP 工具設定：
 ```bash
 cp claude_desktop_config.json ~/sandboxes/claude-desktop/.config/Claude/
 ```
 
-### Create MyManus Project in the Claude Application:
+### 在 Claude 應用程式中建立 MyManus 專案：
 
-![New Project](./assets/Projects.png)
+![新專案](./assets/Projects.png)
 
-![Create MyManus Project](./assets/Create_Project.png)
+![建立 MyManus 專案](./assets/Create_Project.png)
 
-![Create MyManus Project](./assets/Create_MyManus_Project.png)
+![建立 MyManus 專案](./assets/Create_MyManus_Project.png)
 
-![Add Prompt](./assets/Project_Instructions.png)
+![新增提示](./assets/Project_Instructions.png)
 
-## Paste the prompt from [here](./prompts/prompt.md)
-Into here:
+## 從[這裡](./prompts/prompt.md)貼上提示
+到這裡：
 
-![Paste Prompt](./assets/Set_Project_Instructions.png)
+![貼上提示](./assets/Set_Project_Instructions.png)
 
-If you stumble upon any issues read the next section.
+如果您遇到任何問題，請閱讀下一節。
 
-## Step by step, manual instructions
+## 手動逐步說明
 
-1. Read and follow the instruction at https://github.com/emsi/claude-desktop
-2. Read the instruction for MCP on Linux https://github.com/emsi/claude-desktop/blob/main/MCP_LINUX.md
-3. Pay special attention to https://github.com/emsi/claude-desktop/blob/main/MCP_LINUX.md#missing-display-variable
-4. Create and enter the sandbox: `./claude_sandbox.sh`
-5. Copy the MCP servers configuration:
+1. 閱讀並遵循 https://github.com/emsi/claude-desktop 的說明
+2. 閱讀 Linux 上的 MCP 說明 https://github.com/emsi/claude-desktop/blob/main/MCP_LINUX.md
+3. 特別注意 https://github.com/emsi/claude-desktop/blob/main/MCP_LINUX.md#missing-display-variable
+4. 建立並進入沙箱：`./claude_sandbox.sh`
+5. 複製 MCP 伺服器設定：
 `cp claude_desktop_config.json ~/sandboxes/claude-desktop/.config/Claude/`
 
-6. Enter the sandbox: `./claude_sandbox.sh`
-7. While in sandbox run the Claude Desktop: `claude-desktop`
+6. 進入沙箱：`./claude_sandbox.sh`
+7. 在沙箱中運行 Claude Desktop：`claude-desktop`
 
-You can run `claude-desktop` without the sandbox, but then MCP servers will have access to your local filesystem.
+您可以在沒有沙箱的情況下運行 `claude-desktop`，但這樣 MCP 伺服器將可以存取您的本地檔案系統。
 
-# USAGE
+# 使用方法
 
-When starting a new conversation make sure to select the MyManus project:
+開始新對話時，請確保選擇 MyManus 專案：
 
-![Select MyManus Project](./assets/MyManus_Use.png)
+![選擇 MyManus 專案](./assets/MyManus_Use.png)
 
 
-# Automatic Tools Acceptance 
+# 自動接受工具使用
 
-If you want to automatically accept the tool usage read [this guide](https://github.com/emsi/claude-desktop/blob/main/MCP_LINUX.md#auto-accepting-tools)
+如果您想自動接受工具使用，請閱讀[本指南](https://github.com/emsi/claude-desktop/blob/main/MCP_LINUX.md#auto-accepting-tools)

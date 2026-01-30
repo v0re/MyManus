@@ -1,71 +1,72 @@
+# MyManus
 
 <div align="center">
   <img src="./assets/MyManus.png" alt="MyManus">
 </div>
- 
-MyManus is the 100% free, 0% coding, **local**, **secure** agentic environment akin to [Manus AI](https://manus.im/) built entirely around Model Context Protocol [MCP](https://modelcontextprotocol.io/introduction) implementation.
 
-MyManus uses sandboxing to secure your system and allow AI agent to use a browser, create files, run commands, and more.
+MyManus 是一個 100% 免費、0% 編碼、**本地化**、**安全**的代理環境，類似於 [Manus AI](https://manus.im/)，完全圍繞模型上下文協議 [MCP](https://modelcontextprotocol.io/introduction) 實作。
 
-My Manus securely runs the browser on a local machine rather than on some flimsy cloud server, which makes it fast, free, and reliable.
+MyManus 使用沙箱技術來保護您的系統，並允許 AI 代理使用瀏覽器、建立檔案、執行命令等。
 
-Thanks to its magic [prompt](./prompts/prompt.md), MyManus plans, reasons, executes, evaluates, and deals with all the issues on its own. 
+MyManus 在本地機器上安全地運行瀏覽器，而不是在一些脆弱的雲端伺服器上，這使得它快速、免費且可靠。
 
-RESEARCH, CODING, DATA ANALYSIS, PRODUCTIVITY, LIFE, you name it. Depending on the set of tools, it can be used for any task you can imagine.
+得益於其神奇的 [提示](./prompts/prompt.md)，MyManus 能夠自行規劃、推理、執行、評估和處理所有問題。
 
-All that you need is [Claude Desktop](https://github.com/emsi/claude-desktop) app (or any other [MCP Client](https://modelcontextprotocol.io/clients)) and a bunch of existing [MCP servers](https://modelcontextprotocol.io/examples) to set up your ultimate agentic environment, allowing the AI agent to do all the tasks you can imagine. No need to write a single line of code. No need to purchase additional software (apart from an existing [claude.ai](https://claude.ai/) subscription or LLM API).
+研究、編碼、資料分析、生產力、生活，應有盡有。根據工具集的不同，它可以用於您能想像到的任何任務。
 
----
-
-# Installation Options
-
-## For Claude Code (Recommended)
-
-MyManus is now available as a plugin for [Claude Code](https://claude.com/claude-code), Anthropic's official CLI!
-
-**[→ Claude Code Installation Guide](./INSTALL_CLAUDECODE.md)**
-
-## For Claude Desktop
-
-To install MyManus for Claude Desktop app:
-
-**[→ Installation Guide (Linux/macOS)](./INSTALL.md)**
-**[→ Windows Installation Guide](./WINDOWS_INSTALL.md)**
+您所需要的只是一個 [Claude Desktop](https://github.com/emsi/claude-desktop) 應用程式（或任何其他 [MCP 用戶端](https://modelcontextprotocol.io/clients)）和一些現有的 [MCP 伺服器](https://modelcontextprotocol.io/examples)，以設定您的終極代理環境，讓 AI 代理完成您能想像到的所有任務。無需編寫任何程式碼。無需購買額外的軟體（除了現有的 [claude.ai](https://claude.ai/) 訂閱或 LLM API）。
 
 ---
 
-# [USAGE](./USAGE.md)
-To use MyManus, follow the [usage guide](./USAGE.md).
+# 安裝選項
 
-# [EXAMPLES](./EXAMPLES.md)
+## 適用於 Claude Code（推薦）
 
-To see MyManus in action, check out the [examples](./EXAMPLES.md).
+MyManus 現在可作為 [Claude Code](https://claude.com/claude-code) 的外掛程式使用，這是 Anthropic 的官方 CLI！
+
+**[→ Claude Code 安裝指南](./INSTALL_CLAUDECODE.md)**
+
+## 適用於 Claude Desktop
+
+要為 Claude Desktop 應用程式安裝 MyManus：
+
+**[→ 安裝指南 (Linux/macOS)](./INSTALL.md)**
+**[→ Windows 安裝指南](./WINDOWS_INSTALL.md)**
 
 ---
 
-# Skills Marketplace
+# [使用指南](./USAGE.md)
+要使用 MyManus，請遵循[使用指南](./USAGE.md)。
 
-MyManus now includes a built-in **Skills Marketplace** with 8 professional skills, all in Traditional Chinese:
+# [範例](./EXAMPLES.md)
 
-## 📊 Data & Analysis
-- **stock-analysis** (v1.0.0) - Stock and company financial analysis
-- **excel-generator** (v1.0.0) - Professional Excel spreadsheet creation
-- **similarweb-analytics** (v1.0.0) - Website traffic and engagement analysis
+要查看 MyManus 的實際操作，請查看[範例](./EXAMPLES.md)。
 
-## 🔍 Tool Search
-- **github-gem-seeker** (v2.0.0) - Search GitHub for battle-tested solutions and sensitive data
-- **internet-skill-finder** (v1.0.0) - Search and recommend Agent Skills
+---
 
-## 🛠️ Development Tools
-- **skill-creator** (v1.0.0) - Interactive skill creation guide
+# 技能市集
 
-## 🔒 Security & Penetration Testing
-- **penetration-testing** (v1.0.0) - Integrated penetration testing framework (Shodan + Nmap + Kali Tools)
-  - Includes professional **White Hat Hacker Prompt**
-  - Deep vulnerability verification
-  - Custom code generation when standard tools fail
-  - Systematic thinking chain: Observe → Hypothesize → Test → Analyze → Act
+MyManus 現在包含一個內建的**技能市集**，提供 8 個專業技能，全部為繁體中文：
 
-All skills are located in `mymanus-plugin/skills/` and are automatically loaded when MyManus starts.
+## 📊 資料與分析
+- **stock-analysis** (v1.0.0) - 股票與公司財務分析
+- **excel-generator** (v1.0.0) - 專業 Excel 試算表建立
+- **similarweb-analytics** (v1.0.0) - 網站流量與參與度分析
 
-For more information, see [mymanus-plugin/skills/README.md](./mymanus-plugin/skills/README.md).
+## 🔍 工具搜尋
+- **github-gem-seeker** (v2.0.0) - 在 GitHub 上搜尋經過實戰檢驗的解決方案和敏感資料
+- **internet-skill-finder** (v1.0.0) - 搜尋並推薦代理技能
+
+## 🛠️ 開發工具
+- **skill-creator** (v1.0.0) - 互動式技能建立指南
+
+## 🔒 安全與滲透測試
+- **penetration-testing** (v1.0.0) - 整合式滲透測試框架（Shodan + Nmap + Kali 工具）
+  - 包含專業的**白帽駭客提示**
+  - 深度漏洞驗證
+  - 當標準工具失敗時自訂程式碼生成
+  - 系統化思考鏈：觀察 → 假設 → 測試 → 分析 → 行動
+
+所有技能都位於 `mymanus-plugin/skills/` 中，並在 MyManus 啟動時自動載入。
+
+更多資訊，請參閱 [mymanus-plugin/skills/README.md](./mymanus-plugin/skills/README.md)。

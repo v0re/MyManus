@@ -1,9 +1,8 @@
-USAGE
-=====
+# 使用指南
 
-When starting a new conversation make sure to select the MyManus project:
+開始新對話時，請確保選擇 MyManus 專案：
 
-![Select MyManus Project](./assets/BeforeWeStart.gif)
+![選擇 MyManus 專案](./assets/BeforeWeStart.gif)
 
 
-If you want to automatically accept the tool usage read [this guide](https://github.com/emsi/claude-desktop/blob/main/MCP_LINUX.md#auto-accepting-tools)
+如果您想自動接受工具使用，請閱讀[本指南](https://github.com/emsi/claude-desktop/blob/main/MCP_LINUX.md#auto-accepting-tools)
