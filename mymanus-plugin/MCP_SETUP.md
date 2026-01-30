@@ -1,56 +1,56 @@
-# MCP Configuration for MyManus Plugin
+# MyManus 外掛程式的 MCP 設定
 
-The MyManus plugin automatically configures the Playwright MCP server for browser automation. This guide covers platform-specific setup and troubleshooting.
+MyManus 外掛程式會自動設定 Playwright MCP 伺服器以進行瀏覽器自動化。本指南涵蓋特定平台的設定和疑難排解。
 
-## Automatic Setup
+## 自動設定
 
-The plugin includes a `.mcp.json` file that automatically configures Playwright when installed. **No manual configuration needed for macOS/Windows.**
+此外掛程式包含一個 `.mcp.json` 檔案，在安裝時會自動設定 Playwright。**macOS/Windows 無需手動設定。**
 
-### Linux/WSL2 Additional Setup
+### Linux/WSL2 額外設定
 
-Linux and WSL2 require an X server for browser display. Add the DISPLAY environment variable to your MCP configuration:
+Linux 和 WSL2 需要 X 伺服器來顯示瀏覽器。將 DISPLAY 環境變數新增到您的 MCP 設定中：
 
-1. Open Claude Code settings → MCP Servers
-2. Locate the `playwright` server (auto-configured by the plugin)
-3. Add environment variable:
+1. 開啟 Claude Code 設定 → MCP 伺服器
+2. 找到 `playwright` 伺服器（由外掛程式自動設定）
+3. 新增環境變數：
    ```json
    "env": {
      "DISPLAY": ":0"
    }
    ```
 
-**X Server Setup:**
-- **Linux**: X server usually pre-installed with desktop environment
-- **WSL2**: Install VcXsrv or X410 on Windows host
-- Test X server: `xclock` (should show a clock window)
+**X 伺服器設定：**
+- **Linux**：X 伺服器通常隨桌面環境預先安裝
+- **WSL2**：在 Windows 主機上安裝 VcXsrv 或 X410
+- 測試 X 伺服器：`xclock`（應顯示一個時鐘視窗）
 
-## Prerequisites
+## 先決條件
 
-- **Node.js** v18 or later (includes npx)
-- Verify: `node --version` and `npx --version`
+- **Node.js** v18 或更高版本（包含 npx）
+- 驗證：`node --version` 和 `npx --version`
 
-## Troubleshooting
+## 疑難排解
 
-### Browser Doesn't Launch
+### 瀏覽器未啟動
 
-- Verify Node.js: `node --version`
-- Restart Claude Code after plugin installation
-- Check Claude Code logs for MCP errors
+- 驗證 Node.js：`node --version`
+- 在安裝外掛程式後重新啟動 Claude Code
+- 檢查 Claude Code 日誌以獲取 MCP 錯誤
 
-### DISPLAY Error (Linux/WSL2 only)
+### DISPLAY 錯誤（僅限 Linux/WSL2）
 
-- Install X server (VcXsrv for WSL2)
-- Add `"DISPLAY": ":0"` to MCP config env section
-- Start X server before Claude Code
-- Test: `xclock` should display a clock
+- 安裝 X 伺服器（適用於 WSL2 的 VcXsrv）
+- 將 `"DISPLAY": ":0"` 新增到 MCP 設定的 env 部分
+- 在啟動 Claude Code 之前啟動 X 伺服器
+- 測試：`xclock` 應顯示一個時鐘
 
-### Playwright Tools Not Available
+### Playwright 工具不可用
 
-- Restart Claude Code (MCP servers load on startup)
-- Check plugin is installed: `/plugin list`
-- Test Playwright manually: `npx -y @automatalabs/mcp-server-playwright`
+- 重新啟動 Claude Code（MCP 伺服器在啟動時載入）
+- 檢查外掛程式是否已安裝：`/plugin list`
+- 手動測試 Playwright：`npx -y @automatalabs/mcp-server-playwright`
 
-## Resources
+## 資源
 
-- [Playwright MCP Server](https://www.npmjs.com/package/@automatalabs/mcp-server-playwright)
-- [Claude Code MCP Documentation](https://docs.claude.com/en/docs/claude-code/mcp)
+- [Playwright MCP 伺服器](https://www.npmjs.com/package/@automatalabs/mcp-server-playwright)
+- [Claude Code MCP 文件](https://docs.claude.com/en/docs/claude-code/mcp)
